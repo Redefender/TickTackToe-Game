@@ -38,5 +38,15 @@ public class tickTackBoard {
    public String getPos(int y, int x) { //for checkWin method
       return board[y][x];
    }
+   public void clearBoard()
+   {
+      for(int x=0;x<3;x++)
+      {
+         for(int i=0;i<3;i++)
+         {
+            board[x][i] = " ";
+         }
+      }
+   }
    
 }

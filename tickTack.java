@@ -30,6 +30,28 @@ public class tickTack {
             board.placePosition(player1.getSymbol(),player1.getX(),player1.getY());
             board.displayBoard();
             isPlayer1 =false;
+            
+            //checkers
+            if(Validator.checkWin(player1,player2,board) || Validator.checkDraw(player1,player2,board)) //if roundOver
+            {
+               
+               System.out.println("0,2: " + board.getPos(0,2));
+               System.out.println("1,1: " + board.getPos(1,1));
+               System.out.println("2,0: " + board.getPos(2,0));
+               boolean g = gameAgain();
+               if(g)
+               {
+                  gameRunning = true;                 
+                  board.clearBoard();
+                  Validator.clearTaken();
+                  
+               }
+               else
+               {
+                  gameRunning = false;
+               }
+               isPlayer2 = false;
+            }
          }
          while(isPlayer2)
          {
@@ -37,27 +59,27 @@ public class tickTack {
             player2.getPosition();
             board.placePosition(player2.getSymbol(),player2.getX(),player2.getY());
             board.displayBoard();
+            
+            
             isPlayer2 = false;
          }
          if(Validator.checkWin(player1,player2,board) || Validator.checkDraw(player1,player2,board)) //if roundOver
          {
-            Validator.displayTaken();
-            Validator.clearTaken();
-            Validator.displayTaken();
+   
+            
             boolean g = gameAgain();
             if(g)
             {
                gameRunning = true;
+               board.clearBoard();
+               Validator.clearTaken();
             }
             else
             {
                gameRunning = false;
             }
          }
-         else
-         {
-            
-         }   
+          
       }
       
 

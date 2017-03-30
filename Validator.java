@@ -51,7 +51,7 @@ public class Validator {
       boolean whoWinner = false;
       boolean roundOver = false;
       
-      //determine player1 win 
+       
       if(bo.getPos(0,0) == s1 && bo.getPos(0,1) == s1 && bo.getPos(0,2) == s1)
       {
          
@@ -82,18 +82,21 @@ public class Validator {
          whoWinner = true;
          roundOver = true;
       }
+      
       else if(bo.getPos(0,2) == s1 && bo.getPos(1,2) == s1 && bo.getPos(2,2) == s1)
       {
          
          whoWinner = true;
          roundOver = true;
       }
+      //player 1 left top
       else if(bo.getPos(0,0) == s1 && bo.getPos(1,1) == s1 && bo.getPos(2,2) == s1)
       {
          
          whoWinner = true;
          roundOver = true;
       }
+      //player 1 right top
       else if(bo.getPos(0,2) == s1 && bo.getPos(1,1) == s1 && bo.getPos(2,0) == s1)
       {
          
@@ -138,21 +141,21 @@ public class Validator {
          whoWinner = false;
          roundOver = true;
       }
+      //player 2 left top
       else if(bo.getPos(0,0) == s2 && bo.getPos(1,1) == s2 && bo.getPos(2,2) == s2)
       {
          
          whoWinner = false;
          roundOver = true;
       }
+      //player 2 right top
       else if(bo.getPos(0,2) == s2 && bo.getPos(1,1) == s2 && bo.getPos(2,0) == s2)
       {
          
          whoWinner = false;
          roundOver = true;
       }
-      else
-      {
-      }
+      
       
       if(roundOver)
       {
@@ -166,10 +169,7 @@ public class Validator {
          }
          return true;
       }
-      else
-      {
-         return false; //no one has won yet
-      }
+      return false;
 
    }
    public static boolean checkDraw(Player a, Player b, tickTackBoard c)
@@ -179,13 +179,18 @@ public class Validator {
       {
          for(int i=0;i<3;i++)
          {
-            if(c.getPos(x,i) == b.getSymbol() || c.getPos(x,i) == b.getSymbol() )
+            if(c.getPos(x,i) == a.getSymbol() || c.getPos(x,i) == b.getSymbol() )
             {
                isDraw = true;
             }
+            else
+            {
+               return false;
+            }
          }
       }
-      return isDraw;
+      System.out.println("It's a draw!");
+      return true; //only gets down here if all spots taken
    }
    
 }
